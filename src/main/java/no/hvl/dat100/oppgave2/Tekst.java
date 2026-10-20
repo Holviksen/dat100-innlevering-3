@@ -5,32 +5,46 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Tekst extends Innlegg {
 
-	// TODO: objektvariable 
+	private int id;
+	private int likes;
+
+	private String bruker;
+	private String dato;
+	private String tekst;
 	
 	public Tekst () {
 		
 	}
 	
 	public Tekst(int id, String bruker, String dato, String tekst) {
-		throw new UnsupportedOperationException(TODO.constructor("Tekst"));
+		this.id = id;
+		this.bruker = bruker;
+		this.dato = dato;
+		this.tekst = tekst;
+		this.likes = 0;
 	}
 	
 	public Tekst(int id, String bruker, String dato, int likes, String tekst) {
-		throw new UnsupportedOperationException(TODO.constructor("Tekst"));
+		this.id = id;
+		this.bruker = bruker;
+		this.dato = dato;
+		this.tekst = tekst;
+		this.likes = likes;
 	}
 	
 	public String getTekst() {
-		throw new UnsupportedOperationException(TODO.method());
+		return this.tekst;
 
 	}
 
 	public void setTekst(String tekst) {
-		throw new UnsupportedOperationException(TODO.method());
+		this.tekst = tekst;
 	}
 
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		return "TEKST\n" + this.id + "\n" + this.bruker + "\n" + this.dato +
+		"\n" + this.likes + "\n" + this.tekst + "\n";
 
 	}
 	
