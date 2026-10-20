@@ -33,7 +33,7 @@ public abstract class Innlegg {
 	
 	public String getBruker() {
 		
-		return this.bruker;
+		return bruker;
 
 	}
 
@@ -42,7 +42,7 @@ public abstract class Innlegg {
 	}
 
 	public String getDato() {
-		return this.dato;
+		return dato;
 		
 	}
 
@@ -51,12 +51,12 @@ public abstract class Innlegg {
 	}
 
 	public int getId() {
-		return this.id;
+		return id;
 
 	}
 
 	public int getLikes() {
-		return this.likes;
+		return likes;
 
 	}
 	
@@ -75,7 +75,7 @@ public abstract class Innlegg {
 	@Override
 	public String toString() {
 		
-		return this.id + "\n" + this.bruker + "\n" + this.dato + "\n" + this.likes;
+		return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
 				
 	}
 	
