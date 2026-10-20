@@ -7,7 +7,7 @@ public class Blogg {
 
 	private int lengde;
 
-	private Innlegg[] innleggSamling;
+	private Innlegg[] innleggSamling = new Innlegg[lengde];
 
 	public Blogg() {
 		this.innleggSamling = new Innlegg[20];
@@ -15,6 +15,7 @@ public class Blogg {
 
 	public Blogg(int lengde) {
 		this.innleggSamling = new Innlegg[lengde];
+		this.lengde = lengde;
 	}
 
 	public int getAntall() {
@@ -61,8 +62,24 @@ public class Blogg {
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
-		
-		return false;
+		boolean res = false;
+
+		for(int i = 0; i < this.innleggSamling.length; i++){
+			if(!(this.innleggSamling[i].erLik(innlegg))){
+				res = true;
+			}
+			else res = false;
+		}
+
+		if(ledigPlass()){
+			for(int i = 0; i < this.innleggSamling.length; i++){
+				if(this.innleggSamling[i] == null){
+					this.innleggSamling[i] = innlegg;
+					break;
+				}
+			}
+		}
+		return res;
 	}
 	
 	public String toString() {

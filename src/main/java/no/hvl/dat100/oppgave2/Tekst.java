@@ -5,11 +5,6 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Tekst extends Innlegg {
 
-	private int id;
-	private int likes;
-
-	private String bruker;
-	private String dato;
 	private String tekst;
 	
 	public Tekst () {
@@ -17,19 +12,21 @@ public class Tekst extends Innlegg {
 	}
 	
 	public Tekst(int id, String bruker, String dato, String tekst) {
-		this.id = id;
-		this.bruker = bruker;
-		this.dato = dato;
-		this.tekst = tekst;
-		this.likes = 0;
+		setId(id);
+		setBruker(bruker);
+		setDato(dato);
+		setTekst(tekst);
+		
 	}
 	
 	public Tekst(int id, String bruker, String dato, int likes, String tekst) {
-		this.id = id;
-		this.bruker = bruker;
-		this.dato = dato;
-		this.tekst = tekst;
-		this.likes = likes;
+		setId(id);
+		setBruker(bruker);
+		setDato(dato);
+		setTekst(tekst);
+		for(int i = 0; i < likes; i++){
+			doLike();
+		}
 	}
 	
 	public String getTekst() {
@@ -43,8 +40,8 @@ public class Tekst extends Innlegg {
 
 	@Override
 	public String toString() {
-		return "TEKST\n" + this.id + "\n" + this.bruker + "\n" + this.dato +
-		"\n" + this.likes + "\n" + this.tekst + "\n";
+		return "TEKST\n" + getId() + "\n" + getBruker() + "\n" + getDato() +
+		"\n" + getLikes() + "\n" + getTekst() + "\n";
 
 	}
 	

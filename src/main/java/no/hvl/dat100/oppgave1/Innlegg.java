@@ -17,18 +17,20 @@ public abstract class Innlegg {
 	
 	public Innlegg(int id, String bruker, String dato) {
 
-		this.id = id;
-		this.bruker = bruker;
-		this.dato = dato;
+		setId(id);
+		setBruker(bruker);
+		setDato(dato);
 		this.likes = 0;
 	}
 
 	public Innlegg(int id, String bruker, String dato, int likes) {
 
-		this.id = id;
-		this.bruker = bruker;
-		this.dato = dato;
-		this.likes = likes;
+		setId(id);
+		setBruker(bruker);
+		setDato(dato);
+		for(int i = 0; i < likes; i++){
+			doLike();
+		}
 	}
 	
 	public String getBruker() {
@@ -55,6 +57,10 @@ public abstract class Innlegg {
 
 	}
 
+	public void setId(int id){
+		this.id = id;
+	}
+
 	public int getLikes() {
 		return likes;
 
@@ -75,7 +81,7 @@ public abstract class Innlegg {
 	@Override
 	public String toString() {
 		
-		return id + "\n" + bruker + "\n" + dato + "\n" + likes + "\n";
+		return id + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n";
 				
 	}
 	

@@ -4,30 +4,26 @@ import no.hvl.dat100.common.TODO;
 
 public class Bilde extends Tekst {
 
-	private int id;
-	private int likes;
-
-	private String bruker;
-	private String dato;
-	private String tekst;
 	private String url;
 	
 	public Bilde(int id, String bruker, String dato, String tekst, String url) {
-		this.id = id;
-		this.bruker = bruker;
-		this.dato = dato;
-		this.tekst = tekst;
-		this.url = url;
-		this.likes = 0;
+		setId(id);
+		setBruker(bruker);
+		setDato(dato);
+		setTekst(tekst);
+		setUrl(url);
+		
 	}
 
 	public Bilde(int id, String bruker, String dato, int likes, String tekst, String url) {
-		this.id = id;
-		this.bruker = bruker;
-		this.dato = dato;
-		this.tekst = tekst;
-		this.url = url;
-		this.likes = likes;
+		setId(id);
+		setBruker(bruker);
+		setDato(dato);
+		setTekst(tekst);
+		setUrl(url);
+		for(int i = 0; i < likes; i++){
+			doLike();
+		}
 	}
 	
 	public String getUrl() {
@@ -41,8 +37,8 @@ public class Bilde extends Tekst {
 
 	@Override
 	public String toString() {
-		return "BILDE\n" + this.id + "\n" + this.bruker + "\n" + this.dato + 
-		"\n" + this.likes + "\n" + this.tekst + "\n" + this.url + "\n";
+		return "BILDE\n" + getId() + "\n" + getBruker() + "\n" + getDato() + 
+		"\n" + getLikes() + "\n" + getTekst() + "\n" + getUrl() + "\n";
 
 	}
 
