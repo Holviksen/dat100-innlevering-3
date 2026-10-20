@@ -36,7 +36,7 @@ public class Blogg {
 	public int finnInnlegg(Innlegg innlegg) {
 
 		for(int i = 0; i < this.innleggSamling.length; i++){
-			if(this.innleggSamling[i].erLik(innlegg)){
+			if(this.innleggSamling[i] != null && this.innleggSamling[i].erLik(innlegg)){
 				return i;
 			}
 		}
@@ -45,7 +45,7 @@ public class Blogg {
 
 	public boolean finnes(Innlegg innlegg) {
 		for(Innlegg i : this.innleggSamling){
-			if(i.erLik(innlegg)){
+			if(i != null && i.erLik(innlegg)){
 				return true;
 			}
 		}
@@ -65,13 +65,13 @@ public class Blogg {
 		boolean res = false;
 
 		for(int i = 0; i < this.innleggSamling.length; i++){
-			if(!(this.innleggSamling[i].erLik(innlegg))){
+			if(!(this.innleggSamling[i] != null && this.innleggSamling[i].erLik(innlegg))){
 				res = true;
 			}
 			else res = false;
 		}
 
-		if(ledigPlass()){
+		if(ledigPlass() && res){
 			for(int i = 0; i < this.innleggSamling.length; i++){
 				if(this.innleggSamling[i] == null){
 					this.innleggSamling[i] = innlegg;
@@ -83,13 +83,24 @@ public class Blogg {
 	}
 	
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		String innleggString = Integer.toString(getAntall()) + "\n";
+
+		for(Innlegg i : this.innleggSamling){
+			innleggString += i.toString();
+		}
+
+		return innleggString;
 	}
 
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+		Innlegg[] nySamling = new Innlegg[lengde * 2];
+
+		for(int i = 0; i < this.innleggSamling.length; i++){
+			nySamling[i] = this.innleggSamling[i];	
+		}
+		this.innleggSamling = nySamling;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
