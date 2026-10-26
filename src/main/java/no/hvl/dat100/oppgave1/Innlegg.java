@@ -1,7 +1,5 @@
 package no.hvl.dat100.oppgave1;
 
-import no.hvl.dat100.common.TODO;
-
 public abstract class Innlegg {
 	
 
@@ -71,10 +69,8 @@ public abstract class Innlegg {
 	}
 	
 	public boolean erLik(Innlegg innlegg) {
-		if(getId() == innlegg.getId()){
-			return true;
-		}
-		return false;
+		
+		return getId() == innlegg.getId();
 
 	}
 	
@@ -88,7 +84,8 @@ public abstract class Innlegg {
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		return "\t\t<h2>" + getBruker() + "@" + getDato() + " [" + getId() + "]</h2>" + "\n" +
+		"\t\t<p>Antall likes: " + getLikes() + "</p>\n\t\t<hr>\n";
 				
 	}
 }

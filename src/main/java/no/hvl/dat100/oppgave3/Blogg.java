@@ -1,7 +1,8 @@
 package no.hvl.dat100.oppgave3;
 
-import no.hvl.dat100.common.TODO;
-import no.hvl.dat100.oppgave1.*;
+import java.util.Arrays;
+
+import no.hvl.dat100.oppgave1.Innlegg;
 
 public class Blogg {
 
@@ -62,31 +63,32 @@ public class Blogg {
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
-		boolean res = false;
 
-		for(int i = 0; i < this.innleggSamling.length; i++){
-			if(!(this.innleggSamling[i] != null && this.innleggSamling[i].erLik(innlegg))){
-				res = true;
+		for(Innlegg il : this.innleggSamling){
+			if(il != null && il.erLik(innlegg)){
+				return false;
 			}
-			else res = false;
 		}
 
-		if(ledigPlass() && res){
+		if(ledigPlass()){
 			for(int i = 0; i < this.innleggSamling.length; i++){
 				if(this.innleggSamling[i] == null){
 					this.innleggSamling[i] = innlegg;
-					break;
+					return true;
 				}
 			}
 		}
-		return res;
+		return false;
 	}
-	
+
+	@Override
 	public String toString() {
 		String innleggString = Integer.toString(getAntall()) + "\n";
 
 		for(Innlegg i : this.innleggSamling){
-			innleggString += i.toString();
+			if(i != null){
+				innleggString += i.toString();
+			}
 		}
 
 		return innleggString;
@@ -105,18 +107,42 @@ public class Blogg {
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if(finnes(innlegg)){
+			return false;
+		}
+
+		if(!ledigPlass()){
+			utvid();
+		}
+
+		return leggTil(innlegg);
 	}
 	
 	public boolean slett(Innlegg innlegg) {
 		
-		throw new UnsupportedOperationException(TODO.method());
+		if(finnes(innlegg)){
+			this.innleggSamling[finnInnlegg(innlegg)] = null;
+			return true;
+		}
+
+		return false;
 	}
 	
 	public int[] search(String keyword) {
+
+		int[] id = new int[getAntall()];
+
+		int i = 0;
 		
-		throw new UnsupportedOperationException(TODO.method());
+		for(Innlegg il : this.innleggSamling){
+			if(il != null && il.toString().contains(keyword)){
+				id[i] = il.getId();
+				i++;
+			}
+		}
+
+		return Arrays.copyOf(id, i);
+		
 
 	}
 }
